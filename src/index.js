@@ -1,16 +1,15 @@
-import express from 'express';
-import cors from 'cors';
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
 
-dotenv.config();
-
-// config
+import { usersRouter } from '../src/ routers/users.router.js';
+import { transactionsRouter } from '../src/ routers/transactions.router.js';
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
+app.use(usersRouter);
+app.use(transactionsRouter);
 
-
-app.listen(5000,()=> console.log("Server Running in port 5000"))
+app.listen(5000, () => console.log("Server running in port 5000"));
